@@ -2,7 +2,7 @@
 > 정규표현식(Regular Expression)이란 컴퓨터 과학의 정규언어로부터 유래한 것으로 특정한 규칙을 가진 문자열의 집합을 표현하기 위해 쓰이는 형식언어. 
 
 ### 정규식 기본
-![](https://github.com/namjunemy/TIL/blob/master/Algorithm/img/dp_01.png?raw=true)
+![](https://github.com/jj3031/TIL/blob/main/IMG/%EC%A0%95%EA%B7%9C%EC%8B%9D1.png?raw=true)
 
 
 * "*" 은 동그라미로 바뀝니다
