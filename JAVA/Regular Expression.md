@@ -3,23 +3,36 @@
 
 ### 정규식 기본
 ![](https://github.com/jj3031/TIL/blob/main/IMG/%EC%A0%95%EA%B7%9C%EC%8B%9D1.png?raw=true)
+![](https://github.com/jj3031/TIL/blob/main/IMG/%EC%A0%95%EA%B7%9C%EC%8B%9D.png?raw=true)
+
+* 자주 사용하는 패턴
+ * ^[0-9]*$ == \\d == 숫자
+ * ^[a-zA-Z]*$ == 알파벳
+ * ^[가-힣]*$ == 한글
+ * ^[a-zA-Z0-9] == 알파벳이나 숫자
+ * ^ 의 경우 문자의 시작을 의미하지만 [] 안에 있을 경우 not 을 의미한다.
 
 
-* "*" 은 동그라미로 바뀝니다
-  * "*" 밑의 "*" 은 하위 말머리 입니다.
 
 
-
-
-### "###" 은 "#" 의 하위 중 최상위 소제목
-* 여기에 관련 내용을 쓰고 이후 소제목이 바뀌는 내용이 나오면 "###"으로 구분 짓는다.
-
+### Pattern 클래스
+* 정규 표현식에 대한 문자열을 검증하는 기능
+* 공개된 생성자를 제공하지 않음
+* matches method를 이용해서 패턴 분석 가능
 ```java
-int fib(int n) {
-  if (n == 1 || n == 2)
-    return 1;
-  else
-    return fib(n - 2) + fib(n - 1);
-} //자바 코드를 사용 하고 싶을때에는 "'''" 이용
+import java.util.regex.Pattern;
+
+public class RegexExample {
+	public static void main(String[] args)  {
+    
+            String pattern = "^[0-9]*$"; //숫자만
+            String val = "123456789"; //대상문자열
+        
+            boolean regex = Pattern.matches(pattern, val);
+            System.out.println(regex);
+    }
+}
 ```
-### 이미지 사용 방법
+
+### 풀어볼 수 있는 문제
+* 2021 카카오 블라인드 채용 코딩 테스트의 문제인 신규 아이디 추천 문제를 정규식을 활용하여 풀이 가능
