@@ -3,8 +3,9 @@
 > 자바 퍼시스턴스 API 또는 자바 지속성 API(Java Persistence API, JPA)는 자바 플랫폼 SE와 자바 플랫폼 EE를 사용하는 응용프로그램에서 관계형 데이터베이스의 관리를 표현하는 자바 API
 
 ### 정규식 기본
-![](https://github.com/jj3031/TIL/blob/main/IMG/%EC%A0%95%EA%B7%9C%EC%8B%9D1.png?raw=true)
-![](https://github.com/jj3031/TIL/blob/main/IMG/%EC%A0%95%EA%B7%9C%EC%8B%9D.png?raw=true)
+![](https://github.com/jj3031/TIL/blob/main/IMG/JPA.png?raw=true)
+
+스프링에서 흔히 사용하는 것으로 알고있는 JPA는, JPA를 이용하는 spring-data-jpa 프레임워크이지 JPA는 아니다.
 
 * 장점
  * SQL문이 아닌 Method를 통해 DB를 조작할 수 있어, 개발자는 객체 모델을 이용하여 비즈니스 로직을 구성하는데만 집중할 수 있음.
