@@ -13,7 +13,7 @@ import java.util.LinkedHashSet;
 
 public class RegexExample {
 	public static void main(String[] args)  {
-   LinkedHashSet hs = new LinkedHashSet(); // 타입 설정x Object 입력
+   		 LinkedHashSet hs = new LinkedHashSet(); // 타입 설정x Object 입력
 		 LinkedHashSet<LinkedHashSetDemo> demo = new LinkedHashSet<LinkedHashSetDemo>(); // 클래스로 타입 설정
 		 LinkedHashSet<Integer> i = new LinkedHashSet<Integer>(); // Integer 타입 선언
 		 LinkedHashSet<Integer> i2 = new LinkedHashSet(); // 뒷부분 타입 선언 생략 가능
