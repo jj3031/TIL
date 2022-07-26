@@ -9,15 +9,41 @@ for문 여러번 돌려서도 해결이 가능하나 시간이 부족 할 것.
 ### 기본 로직
 * 2부터 1씩 증가하면서 주어진 숫자까지 반복해서 증가된 수로 나눠지면 배열에서 제외 하는 식의 로직
 
-'''java
-'''
+
+### 예제
+```java
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+	
+
+	public static void main(String[] args) throws IOException {
+		Main T= new Main();
+		Scanner kb= new Scanner(System.in);
+		int n = kb.nextInt();
+		System.out.println(T.solution(n));
+	}
+
+	public int solution(int n) {
+		int answer=0;
+		int[] ch = new int[n+1];
+		for(int i=2; i<=n;i++) {
+			if(ch[i]==0) {
+				answer++;
+				for(int j=i; j<=n; j=j+i) {
+					ch[j]=1;
+				}
+			}
+		}
+				
+		return answer;
+	}
+}
+```
+### 해당 로직에서 배운것
+* 이제는 빠르기도 생각하는 코딩을 할 것
+* 문제 해결이 능사가 아님
 
 
 
-### 왜 JPA를 사용해야 할까?
-* JPA는 반복적인 CRUD SQL을 처리해준다. JPA는 매핑된 관계를 이용해서 SQL을 생성하고 실행하는데, 개발자는 어떤 SQL이 실행될지 생각만하면 되고, 예측도 쉽게 할 수 있다. 
-* 추가적으로 JPA는 네이티브 SQL이란 기능을 제공해주는데 관계 매핑이 어렵거나 성능에 대한 이슈가 우려되는 경우 SQL을 직접 작성하여 사용할 수 있다.
-* JPA를 사용하여 얻을 수 있는 가장 큰 것은 SQL아닌 객체 중심으로 개발할 수 있다는 것이다. 
-  이에 따라 당연히 생산성이 좋아지고 유지보수도 수월하다. 
-  또한 JPA는 패러다임의 불일치도해결하였다. 
-  예를 들면 JAVA에서는 부모클래스와 자식클래스의 관계 즉, 상속관계가 존재하는데 데이터베이스에서는 이러한 객체의 상속관계를 지원하지 않는다(상속 기능을 지원하는 DB도 있지만 객체 상속과는 다름). 
