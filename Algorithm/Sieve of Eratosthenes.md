@@ -13,32 +13,47 @@
 
 ### 예제
 ```java
-import java.io.IOException;
-import java.util.Scanner;
+public class Eratos {
+	public static void main(String[] args) {
+		// ArrayList로 구현
+		ArrayList<Boolean> primeList;
 
-public class Main {
-	
+		// 사용자로부터의 콘솔 입력
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
 
-	public static void main(String[] args) throws IOException {
-		Main T= new Main();
-		Scanner kb= new Scanner(System.in);
-		int n = kb.nextInt();
-		System.out.println(T.solution(n));
-	}
+		// n <= 1 일 때 종료
+		if(n <= 1) return;
 
-	public int solution(int n) {
-		int answer=0;
-		int[] ch = new int[n+1];
-		for(int i=2; i<=n;i++) {
-			if(ch[i]==0) {
-				answer++;
-				for(int j=i; j<=n; j=j+i) {
-					ch[j]=1;
-				}
+		// n+1만큼 할당
+		primeList = new ArrayList<Boolean>(n+1);
+		// 0번째와 1번째를 소수 아님으로 처리
+		primeList.add(false);
+		primeList.add(false);
+		// 2~ n까지 소수로 설정
+		for(int i=2; i<=n; i++ )
+			primeList.add(i, true);
+
+		// 2부터  ~ i*i <= n
+		// 각각의 배수들을 지워간다.
+		for(int i=2; (i*i)<=n; i++){
+			if(primeList.get(i)){
+				for(int j = i*i; j<=n; j+=i) primeList.set(j, false);
+				//i*i 미만은 이미 처리되었으므로 j의 시작값은 i*i로 최적화할 수 있다.
 			}
 		}
-				
-		return answer;
+		StringBuffer sb = new StringBuffer();
+		sb.append("{");
+		for(int i=0; i<=n; i++){
+			if(primeList.get(i) == true){
+				sb.append(i);
+				sb.append(",");
+			}
+		}
+		sb.setCharAt(sb.length()-1, '}');
+
+		System.out.println(sb.toString());
+
 	}
 }
 ```
