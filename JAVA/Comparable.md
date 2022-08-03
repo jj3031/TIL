@@ -1,13 +1,13 @@
 # Comparable 과 Comparator의 이해
-> Comparable과 Comparator는 모두 인터페이스(interface)
-> Comparable 혹은 Comparator을 사용하고자 한다면 인터페이스 내에 선언된 메소드를 '반드시 구현'
+> Comparable과 Comparator는 모두 인터페이스(interface).
+> Comparable 혹은 Comparator을 사용하고자 한다면 인터페이스 내에 선언된 메소드를 '반드시 구현'.
 > Comparable 인터페이스를 쓰려면 compareTo 메소드를 구현해야하고, Comparator 인터페이스를 쓰려면 compre 메소드를 구현해야 한다.
 
 
 ### Comparable
-> "객체를 비교할 수 있도록 만든다." 로 설명이 끝나는 인터페이스
+> "객체를 비교할 수 있도록 만든다." 로 설명이 끝나는 인터페이스.
 > 새로운 클래스 객체를 만들어 비교하고자 한다면 해당 인터페이스를 impl 받아서 사용 해야 한다.
-> compareTo method를 override 해서 정렬 기준을 정할 수 있다 ex) 오름차순, 내림차순
+> compareTo method를 override 해서 정렬 기준을 정할 수 있다 ex) 오름차순, 내림차순.
 
 ```java
 import java.io.IOException;
