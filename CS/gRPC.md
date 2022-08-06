@@ -6,51 +6,48 @@
 > RPC는 Remote Procedure Call로 프로세스간 통신 기법 중 하나. 다른 프로세스에 있는 함수를 호출할때, 마치 같은 프로세스 내에 있는 것처럼 호출할 수 있다. 
 > 클라이언트는 일반 로컬 메소드를 호출하는 것처럼 사용하면 된다. RPC는 다양한 환경, 플랫폼에 제약없이 사용할 수 있어 분산 시스템 기법에 효과적.
 
-```java
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+![img](https://github.com/jj3031/TIL/blob/main/IMG/RPC.png?type=w2)
 
 
-class Point implements Comparable<Point>{
-	public int x, y;
-	Point(int x, int y){
-		this.x =x;
-		this.y=y;
-	}
-	@Override
-	public int compareTo(Point o) {
-		if(this.x==o.x) return this.y-o.y; //음수가 return 되면, 즉 o.y 가 this.y 보다 크면 o.y가 this.y보다 뒤에 위치한다. => 오름차순
-		else return this.x-o.x;
-	}
-}
+###Caller/Callee
+>Client(Caller)와 Server(Callee)는 사용자가 필요한 비지니스 로직을 작성하는 레이어.
 
-public class Main {
+
+>IDL(Interface Definition Language)을 사용하여 서로의 인터페이스를 명시.
+
+>Stub은 RPC의 핵심 개념이라고 볼 수 있음. 
+>서버와 클라이언트는 서로 다른 주소 공간을 사용 하므로 함수 호출에 사용된 매개 변수를 꼭 변환해줘야함. 
+>그렇지 않으면 메모리 매개 변수에 대한 포인터가 다른 데이터를 가리키게 됨.
+>client의 stub은 함수 호출에 사용된 파라미터의 변환(Marshalling) 및 함수 실행 후 서버에서 전달 된 결과의 변환을 담당.
+>server stub은 클라이언트가 전달한 매개 변수의 역변환(Unmarshalling) 및 함수 실행 결과 변환을 담당.
+
+
+###gRPC란?
+>gRPC는 구글에서 개발한 어느 환경에서 실행할 수 있는 최신 오픈 소스 고성능 RPC 프레임워크이다.
+>gRPC를 이용하면 원격에 있는 애플리케이션의 메서드를 로컬 메서드인 것처럼 직접 호출할 수 있기 때문에 분산 애플리케이션과 서비스를 보다 쉽게 만들 수 있다.
+>gRPC는 RPC 시스템에서와 마찬가지로 서비스를 정의하고, 서비스를 위한 매개변수와 반환 값을 가지는 메서드를 만든다는 아이디어를 가지고 있다.
+
+![img](https://github.com/jj3031/TIL/blob/main/IMG/gRPC.png?type=w2)
+
+>서버 측은 정의한 서비스 규격에 따라 인터페이스를 구현하고 gRPC 서버를 실행하여 클라이언트 호출을 처리한다. 클라이언트 측에서는 서버와 동일한 방법을 제공하는 stub이 있다.
+
+###stub
+
+>Stub는 RPC의 핵심 개념으로 Parameter 객체를 Message로 Marshalling/Unmarshalling하는 레이어이다.
+>서버와 클라이언트는 서로 다른 주소 공간을 사용하므로 함수 호출에 사용된 매개 변수를 꼭 변환해줘야 한다.
+>그렇지 않으면 메모리 매개 변수에 대한 포인터가 다른 데이터를 가리키게 되기 때문이다.
+
+	# client의 stub은 함수 호출에 사용된 파라미터의 변환(marshalling) 및 함수 실행 후 서버에서 전달된 결과의 변환 담당
+	# server의 stub은 클라이언트가 전달한 매개 변수의 역변환(unmarshalling) 및 함수 실행 결과 변환을 담당
 	
+###gRPC 특징
+	# 높은 생산성과 다양한 언어 및 플랫폼 지원
+	# gRPC는 서비스와 메시지를 정의하기 위해 Protocol Buffers를 사용한다. 
+	# 프로토콜 버퍼의 IDL만 정의하면 서비스와 메세지에 대한 소스코드가 자동으로 생성되고 데이터를 주고 받을 수 있다.
 
+	##HTTP/2 기반의 양방향 스트리밍
+		# gRPC는 HTTP/2 기반으로 통신한다. HTTP/2는 하나의 TCP 연결이 여러 개의 양방향 스트리밍을 지원한다.
 
-	public static void main(String[] args) throws IOException {
-		Main T= new Main();
-		Scanner kb= new Scanner(System.in);
-		int n= kb.nextInt();
-		ArrayList<Point> arr= new ArrayList<>(); // Point 는 객체지만 compareTo method 를 override 했기 때문에 정렬이 가능해진다.
-		for(int i=0; i<n; i++) {
-			int x=kb.nextInt();
-			int y=kb.nextInt();
-			arr.add(new Point(x,y));
-		}
-
-		Collections.sort(arr);
-		for(Point o : arr) {
-			System.out.println(o.x+" "+o.y);
-		}
-		
-	}
-
-}
-```
+	## 성능 이점
+		# gRPC는 HTTP/2 레이어 위에서 Protocol Buffers를 사용해 직렬화된 바이트 스트림으로 통신하여 JSON 기반의 통신보다 더 가볍고 통신 속도가 빠르다. 
+		# 때문에 laytency 감소와 더 많은 트래픽을 처리할 수 있는 성능의 이점이 있다.
