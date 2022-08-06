@@ -9,7 +9,7 @@
 ![img](https://github.com/jj3031/TIL/blob/main/IMG/RPC.png?type=w2)
 
 
-###Caller/Callee
+### Caller/Callee
 >Client(Caller)와 Server(Callee)는 사용자가 필요한 비지니스 로직을 작성하는 레이어.
 
 
@@ -22,7 +22,7 @@
 >server stub은 클라이언트가 전달한 매개 변수의 역변환(Unmarshalling) 및 함수 실행 결과 변환을 담당.
 
 
-###gRPC란?
+### gRPC란?
 >gRPC는 구글에서 개발한 어느 환경에서 실행할 수 있는 최신 오픈 소스 고성능 RPC 프레임워크이다.
 >gRPC를 이용하면 원격에 있는 애플리케이션의 메서드를 로컬 메서드인 것처럼 직접 호출할 수 있기 때문에 분산 애플리케이션과 서비스를 보다 쉽게 만들 수 있다.
 >gRPC는 RPC 시스템에서와 마찬가지로 서비스를 정의하고, 서비스를 위한 매개변수와 반환 값을 가지는 메서드를 만든다는 아이디어를 가지고 있다.
@@ -31,7 +31,7 @@
 
 >서버 측은 정의한 서비스 규격에 따라 인터페이스를 구현하고 gRPC 서버를 실행하여 클라이언트 호출을 처리한다. 클라이언트 측에서는 서버와 동일한 방법을 제공하는 stub이 있다.
 
-###stub
+### stub
 
 >Stub는 RPC의 핵심 개념으로 Parameter 객체를 Message로 Marshalling/Unmarshalling하는 레이어이다.
 >서버와 클라이언트는 서로 다른 주소 공간을 사용하므로 함수 호출에 사용된 매개 변수를 꼭 변환해줘야 한다.
@@ -40,7 +40,7 @@
 	# client의 stub은 함수 호출에 사용된 파라미터의 변환(marshalling) 및 함수 실행 후 서버에서 전달된 결과의 변환 담당
 	# server의 stub은 클라이언트가 전달한 매개 변수의 역변환(unmarshalling) 및 함수 실행 결과 변환을 담당
 	
-###gRPC 특징
+### gRPC 특징
 	# 높은 생산성과 다양한 언어 및 플랫폼 지원
 	# gRPC는 서비스와 메시지를 정의하기 위해 Protocol Buffers를 사용한다. 
 	# 프로토콜 버퍼의 IDL만 정의하면 서비스와 메세지에 대한 소스코드가 자동으로 생성되고 데이터를 주고 받을 수 있다.
