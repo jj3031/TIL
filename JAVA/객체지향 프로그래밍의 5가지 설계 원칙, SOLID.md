@@ -1,7 +1,4 @@
-# Comparable 과 Comparator의 이해
-> Comparable과 Comparator는 모두 인터페이스(interface).
-> Comparable 혹은 Comparator을 사용하고자 한다면 인터페이스 내에 선언된 메소드를 '반드시 구현'.
-> Comparable 인터페이스를 쓰려면 compareTo 메소드를 구현해야하고, Comparator 인터페이스를 쓰려면 compre 메소드를 구현해야 한다.
+# 객체지향 프로그래밍의 5가지 설계 원칙, SOLID.md
 
 
 ### 단일 책임의 원칙(SRP, Single Responsibility Principle)
