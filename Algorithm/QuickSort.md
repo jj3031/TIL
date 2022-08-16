@@ -66,6 +66,7 @@ public int partition(int[] array, int left, int right) {
 
 ---
 
+![](https://github.com/jj3031/TIL/blob/main/IMG/%ED%80%B5%EC%A0%95%EB%A0%AC.gif?raw=true)
 
 
 버블정렬은 모든 배열의 요소에 대한 인덱스를 하나하나 증가하며 비교해나가는 O(n^2)
